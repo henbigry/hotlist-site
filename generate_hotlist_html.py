@@ -4,7 +4,7 @@
 热榜速览 · 手机端界面生成器
 ==========================
 直接通过自建 NewsNow 站（https://newsnow-yin.pages.dev）拉取多平台热榜，
-按合规黑名单过滤时政/国际/伤亡/政策类敏感内容，
+内容均为各平台已审核公开的公开热榜，不再做额外敏感词过滤，
 由本脚本设计一个手机端阅读比例的精美界面并填充内容，产出单文件 HTML。
 
 用法：
@@ -36,59 +36,22 @@ RAW_PER_SOURCE = 30     # 每源最多取多少条原始候选
 KEEP_PER_SOURCE = 10    # 过滤后每源保留多少条
 
 # 目标平台（展示顺序）：id, 展示名, 站内图标文件, 主题色(hex)
+# 顺序按运营需求固定；内容均为各平台已审核公开的公开热榜，不再做额外敏感词过滤。
 PLATFORMS = [
-    ("baidu",    "百度热搜", "baidu.png",    "#4e6ef2"),
-    ("bilibili", "哔哩哔哩", "bilibili.png", "#00aeec"),
-    ("cls",      "财联社",   "cls.png",      "#c0392b"),
-    ("douban",   "豆瓣",     "douban.png",   "#2e963f"),
-    ("douyin",   "抖音",     "douyin.png",   "#fe2c55"),
-    ("hupu",     "虎扑",     "hupu.png",     "#ff7a00"),
-    ("iqiyi",    "爱奇艺",   "iqiyi.png",    "#00be06"),
-    ("ifeng",    "凤凰网",   "ifeng.png",    "#d8362a"),
-    ("weibo",    "微博",     "weibo.png",    "#e6162d"),
-    ("zhihu",    "知乎",     "zhihu.png",    "#0084ff"),
+    ("douyin",       "抖音",       "douyin.png",       "#fe2c55"),
+    ("weibo",        "微博",       "weibo.png",        "#e6162d"),
+    ("bilibili",     "哔哩哔哩",   "bilibili.png",      "#00aeec"),
+    ("iqiyi",        "爱奇艺",     "iqiyi.png",        "#00be06"),
+    ("sspai",        "少数派",     "sspai.png",        "#f43f5e"),
+    ("toutiao",      "今日头条",   "toutiao.png",      "#e64142"),
+    ("ifeng",        "凤凰网",     "ifeng.png",        "#d8362a"),
+    ("thepaper",     "澎湃新闻",   "thepaper.png",     "#d8262c"),
+    ("cls",          "财联社",     "cls.png",          "#c0392b"),
+    ("wallstreetcn", "华尔街见闻", "wallstreetcn.png", "#b8932f"),
 ]
 
 # 合规黑名单：命中即丢弃（时政/党政/国际冲突/伤亡突发事件/政策经济/社会新闻类）
 # 策略：对新闻类源（凤凰/微博/知乎/财联社等）宁可多删，确保发抖音安全。
-SENSITIVE = [
-    # —— 党政时政 / 领导人 ——
-    "习近平", "总书记", "政治局", "国务院", "两会", "人大", "政协", "发改委",
-    "工信部", "外交部", "国防部", "台办", "统战", "中央", "部长", "主席",
-    "省委", "市委", "县委", "书记", "省长", "市长", "县长", "领导", "干部",
-    "官方", "通报", "回应", "讲话", "指示", "会议", "部署", "强调", "精神",
-    "学习", "贯彻", "批示", "视察", "调研", "慰问", "致辞", "报告",
-    # —— 反腐 / 政务 ——
-    "落马", "被查", "双开", "处分", "调查", "问责", "纪委", "监委", "巡视",
-    "涉嫌", "违纪", "违法", "通报处理", "免职", "辞职",
-    # —— 国际冲突 / 人物 / 外交 ——
-    "特朗普", "拜登", "普京", "伊朗", "以色列", "俄乌", "乌克兰", "俄罗斯",
-    "白宫", "北约", "制裁", "联合国", "日本", "韩国", "欧盟", "美媒",
-    "瑙鲁", "台岛", "岸田", "泽连斯基", "哈马斯", "以军", "中美", "外交",
-    "使馆", "外长", "国防部", "解放军",
-    # —— 伤亡 / 突发事件 / 治安 ——
-    "遇难", "死亡", "爆炸", "火灾", "枪击", "罹难", "地震", "车祸", "事故",
-    "战争", "冲突", "斩首", "导弹", "军事", "部队", "停火", "袭击", "遭袭",
-    "坠机", "沉船", "台风", "洪水", "暴雨", "泥石流", "疫情", "确诊", "身亡",
-    "遇难者", "受伤", "失联", "搜救", "受灾", "坠楼", "坠亡", "跳楼",
-    "轻生", "溺亡", "刑拘", "逮捕", "获刑", "判刑", "警方", "公安", "民警",
-    "纠纷", "维权", "上访", "抗议", "示威", "罢工", "群体性",
-    # —— 政策 / 经济时政 ——
-    "加快构建", "绿色低碳", "供给格局", "碳达峰", "碳中和", "能源转型",
-    "十四五", "经济工作会议", "货币政策", "宏观调控", "国务院发文", "央行",
-    "证监会", "财政部", "减税", "社保", "医保", "养老金", "发改委", "统计局",
-    # —— 港澳台敏感 ——
-    "台湾", "台独", "香港", "澳门", "选情",
-    # —— 本轮补漏（抖音易限流/下架）——
-    "反制", "人贩子", "梅姨", "抛尸", "国赔", "实名举报", "立案侦查",
-    # —— 本轮加固：国际时政 / 外交 / 海外政要 / 宏观政策（抖音限流红线）——
-    "美伊", "美债", "美日", "美欧", "美联储", "加息", "汇率", "华尔街", "非农",
-    "霍尔木兹", "海峡", "加沙", "耶路撒冷", "巴以", "以巴",
-    "台海", "台军", "金门", "南海", "菲方", "菲律宾", "反华", "涉华",
-    "扫黑除恶", "严打", "维稳",
-    "碎尸", "奸杀", "命案", "凶手", "被害", "遇害",
-]
-
 
 # ---------- 数据拉取 ----------
 def fetch_source(sid, retries=2):
@@ -113,13 +76,6 @@ def fetch_source(sid, retries=2):
     return []
 
 
-def is_safe(title):
-    for kw in SENSITIVE:
-        if kw in title:
-            return False
-    return True
-
-
 def clean_title(title):
     t = re.sub(r"#[^#\s]*#?", "", title)   # 去话题标签
     t = re.sub(r"\s{2,}", " ", t).strip()
@@ -137,15 +93,14 @@ def collect():
             t = clean_title(it["title"])
             if not t:
                 continue
-            if is_safe(t):
-                items.append({"title": t, "url": it["url"]})
+            items.append({"title": t, "url": it["url"]})
             if len(items) >= KEEP_PER_SOURCE:
                 break
         boards.append({
             "id": sid, "name": name, "icon": icon, "color": color,
             "total_raw": len(raw), "items": items,
         })
-        status = f"{len(raw)} 原始 / {len(items)} 通过过滤" if raw else "未取到（超时/限流）"
+        status = f"{len(raw)} 原始 / {len(items)} 保留" if raw else "未取到（超时/限流）"
         print(f"      {name}: {status}")
     return boards
 
@@ -258,6 +213,7 @@ body { color: #3a2f2a; line-height: 1.5; }
 .row .tt {
   flex: 1; font-size: 17px; color: #34291f; font-family: 'ZCOOL XiaoWei';
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  text-decoration: none;
 }
 .row .hot { margin-left: 10px; font-size: 12px; color: #d9b89f; white-space: nowrap; flex: 0 0 auto; font-family: 'Noto Sans SC', sans-serif; }
 .empty { padding: 22px 16px; color: #c9a98f; font-size: 14px; text-align: center; }
@@ -282,9 +238,16 @@ def build_html(date_str, boards, icon_prefix="icons/"):
         else:
             for i, it in enumerate(b["items"], 1):
                 cls = "row top%d" % i if i <= 3 else "row"
+                url = it.get("url", "")
+                if url:
+                    ttag = ('<a class="tt" href="%s" target="_blank" '
+                            'rel="noopener">%s</a>'
+                            % (esc(url).replace('"', "&quot;"), esc(it["title"])))
+                else:
+                    ttag = '<div class="tt">%s</div>' % esc(it["title"])
                 rows.append(
-                    '<div class="%s"><div class="rank">%d</div>'
-                    '<div class="tt">%s</div></div>' % (cls, i, esc(it["title"]))
+                    '<div class="%s"><div class="rank">%d</div>%s</div>'
+                    % (cls, i, ttag)
                 )
         cards.append(
             '<section class="card" style="--c:%s">'
@@ -316,8 +279,6 @@ def build_html(date_str, boards, icon_prefix="icons/"):
         "<title>热榜速览 · __DATE__</title><style>__CSS__</style></head>"
         "<body><div class=\"phone\">" + cover +
         "<div class=\"wrap\">__CARDS__"
-        "<div class=\"foot\">内容聚合自各平台公开热榜，经敏感词过滤后展示<br>"
-        "来源：<b>newsnow-yin.pages.dev</b> · 仅供参考，请以原平台为准</div>"
         "</div></div></body></html>"
     )
     html = (template
@@ -339,7 +300,7 @@ def build_links_md(date_str, boards):
     L = [
         "# 热榜速览 · 热点详情链接（%s）" % date_cn,
         "",
-        "> 内容聚合自各平台公开热榜，经敏感词过滤后展示。点击直达原平台该条热搜详情页。",
+        "> 内容聚合自各平台公开热榜（来源均已审核公开）。点击直达原平台该条热搜详情页。",
         "",
     ]
     for b in boards:
@@ -478,7 +439,7 @@ def build_hotlist_html(date_str, boards):
         "</header>"
         "<div class=\"hlist\">%s</div>"
         "<footer class=\"hfoot\">共 %d 条热点 · 按平台分类 · 点击直达原平台详情<br>"
-        "内容聚合自各平台公开热榜，经敏感词过滤后展示 · 来源 newsnow-yin.pages.dev</footer>"
+        "内容聚合自各平台公开热榜</footer>"
         "</div><script>%s</script></body></html>"
         % (date_str, HOTLIST_CSS, date_cn, "".join(sections), total, HOTLIST_JS)
     )

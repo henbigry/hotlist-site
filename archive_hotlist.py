@@ -103,8 +103,8 @@ def build_index():
         "<header class=\"ahero\"><div class=\"at\">热榜速览 · 历史归档</div>"
         "<div class=\"as\">每日热点快照 · 共 [[COUNT]] 份 · 点击回看任意一天</div></header>"
         "<div class=\"alist\">[[ITEMS]]</div>"
-        "<footer class=\"afoot\">内容聚合自各平台公开热榜，经敏感词过滤后展示<br>"
-        "来源 newsnow-yin.pages.dev · 仅供参考</footer>"
+        "<footer class=\"afoot\">内容聚合自各平台公开热榜<br>"
+        "仅供参考</footer>"
         "</div></body></html>"
     )
     return tpl.replace("[[COUNT]]", str(count)).replace("[[ITEMS]]", "".join(items))
