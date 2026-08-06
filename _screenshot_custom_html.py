@@ -36,12 +36,12 @@ with sync_playwright() as p:
     page.goto(f"http://127.0.0.1:{PORT}/index.html", wait_until="networkidle", timeout=30000)
     time.sleep(2)
 
-    # 封面：首屏视口
-    cover_path = os.path.join(OUT, "cover.png")
+    # 封面：首屏视口（序号 0）
+    cover_path = os.path.join(OUT, "0-cover.png")
     page.screenshot(path=cover_path)
     print(f"saved {cover_path}")
 
-    # 各平台卡片
+    # 各平台卡片（序号 1..N，与页面展示顺序一致）
     cards = page.query_selector_all(".card")
     print(f"found {len(cards)} cards")
     for i, card in enumerate(cards):
@@ -52,7 +52,7 @@ with sync_playwright() as p:
             safe = name.replace(" ", "").replace("/", "_")
             page.evaluate("el => el.scrollIntoView({block:'center'})", card)
             time.sleep(0.5)
-            path = os.path.join(OUT, f"{safe}.png")
+            path = os.path.join(OUT, f"{i+1}-{safe}.png")
             card.screenshot(path=path)
             print(f"saved {path} ({name})")
         except Exception as e:
