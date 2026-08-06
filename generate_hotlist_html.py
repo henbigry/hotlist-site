@@ -273,7 +273,7 @@ def esc(s):
     return (s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
 
 
-def build_html(date_str, boards):
+def build_html(date_str, boards, icon_prefix="icons/"):
     cards = []
     for b in boards:
         rows = []
@@ -288,10 +288,10 @@ def build_html(date_str, boards):
                 )
         cards.append(
             '<section class="card" style="--c:%s">'
-            '<div class="card-head"><img class="ic" src="icons/%s" alt="%s">'
+            '<div class="card-head"><img class="ic" src="%s%s" alt="%s">'
             '<span class="nm">%s</span>'
             '<span class="tag">TOP %d</span></div>%s</section>'
-            % (b["color"], b["icon"], esc(b["name"]), esc(b["name"]),
+            % (b["color"], icon_prefix, b["icon"], esc(b["name"]), esc(b["name"]),
                len(b["items"]), "".join(rows))
         )
     week = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
@@ -527,6 +527,10 @@ def generate(date_str):
     hotlist_path = os.path.join(OUT_ROOT, "hotlist.html")
     with open(hotlist_path, "w", encoding="utf-8") as f:
         f.write(hotlist)
+    # 导出 boards 供归档脚本复用：保证归档快照与当日线上页数据一致，且避免重复拉取
+    boards_path = os.path.join(OUT_ROOT, "boards_%s.json" % date_str)
+    with open(boards_path, "w", encoding="utf-8") as f:
+        json.dump(boards, f, ensure_ascii=False)
     print(f"[3/3] 完成 ✅")
     print(f"      当日 HTML : {path}")
     print(f"      最新 HTML : {latest}")

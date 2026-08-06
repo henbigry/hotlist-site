@@ -1,5 +1,9 @@
 # ===== 密钥（绝不入库）=====
 .cloudflare.env
+.github.env
+
+# ===== 子仓库：归档站独立管理（每天快照 + 索引）=====
+hotlist-archive/
 
 # ===== 子仓库：newsnow 新闻站独立管理 =====
 newsnow/
