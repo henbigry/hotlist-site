@@ -7,6 +7,13 @@
 - 汇总页（手机端）：`https://re-yin.pages.dev/`
 - 短链（置顶评论用）：`https://re-yin.pages.dev/l` （302 → 汇总页）
 
+## GitHub 仓库
+
+- 本仓库（热搜汇总站：代码 / 产物 / 部署脚本）：`https://github.com/henbigry/hotlist-site`
+- newsnow 新闻站（独立仓库，fork 自 ourongxing/newsnow）：`https://github.com/henbigry/newsnow`
+  - 本地 `newsnow/` 的 `origin` = 你的 fork，`upstream` = 官方源。改完新闻站后 `git push` 推到你的 fork。
+  - 同步官方更新：`git fetch upstream && git merge upstream/main`
+
 ## 仓库结构
 
 本仓库管理「热搜汇总站」的自定义代码。`newsnow/` 新闻站是**独立仓库**（fork 自 ourongxing/newsnow），已在本仓库 `.gitignore` 中忽略。
