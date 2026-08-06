@@ -1,0 +1,28 @@
+# ===== 密钥（绝不入库）=====
+.cloudflare.env
+
+# ===== 子仓库：newsnow 新闻站独立管理 =====
+newsnow/
+
+# ===== 构建/缓存产物 =====
+__pycache__/
+*.pyc
+.workbuddy/
+
+# ===== 生成的截图（可重生成，不入库）=====
+热搜_html_shots/
+newsnow_shots/
+
+# ===== 早期实验 / 废弃脚本（已被现有方案取代）=====
+_newsnow_data.json
+_explore_home.png
+_explore.py
+_debug_cards.py
+_fetch_newsnow.py
+_screenshot_newsnow.py
+generate_douyin_cards.py
+restyle_hotlist.py
+douyin_cards/
+
+# ===== 系统文件 =====
+.DS_Store

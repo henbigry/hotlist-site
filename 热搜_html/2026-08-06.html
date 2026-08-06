@@ -1,0 +1,114 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>热榜速览 · 2026-08-06</title><style>@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=ZCOOL+XiaoWei&family=Noto+Sans+SC:wght@400;500;700&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body {
+  background: linear-gradient(160deg, #fff1e6 0%, #ffe6ef 55%, #fff7e0 100%);
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont,
+               "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+body { color: #3a2f2a; line-height: 1.5; }
+.phone {
+  max-width: 460px; margin: 0 auto; background: #fffaf3; min-height: 100vh;
+  box-shadow: 0 0 50px rgba(255,140,90,0.18);
+}
+/* —— 封面图（暖色 hero，占满首屏）—— */
+.cover {
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, #ff8a5b 0%, #ff5e8a 48%, #ffb347 100%);
+  color: #fff; text-align: center;
+  min-height: 100vh; min-height: 100dvh;
+  display: flex; flex-direction: column;
+}
+.cover .cover-inner {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 86px 24px 30px;
+  position: relative; z-index: 1;
+}
+.cover::after {
+  content: ""; position: absolute; right: -40px; top: -40px;
+  width: 150px; height: 150px; border-radius: 50%;
+  background: rgba(255,255,255,0.16);
+}
+.cover::before {
+  content: ""; position: absolute; left: -30px; bottom: -50px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+}
+.cover .deco { font-size: 20px; letter-spacing: 6px; opacity: 0.9; position: relative; z-index: 1; }
+.cover .ctitle {
+  font-family: 'ZCOOL KuaiLe';
+  font-size: 36px; font-weight: 400; margin-top: 10px; letter-spacing: 2px;
+  text-shadow: 0 3px 10px rgba(180,40,80,0.35); position: relative; z-index: 1;
+}
+.cover .cslogan {
+  margin-top: 16px; display: flex; flex-direction: column; align-items: center;
+  gap: 8px; position: relative; z-index: 1;
+}
+.cover .cslogan .s1 {
+  font-family: 'ZCOOL KuaiLe';
+  font-size: 20px; font-weight: 400; letter-spacing: 3px;
+  text-shadow: 0 2px 8px rgba(180,40,80,0.3);
+}
+.cover .cslogan .s2 {
+  font-size: 15px; letter-spacing: 1px; opacity: 0.96;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.cover .cdate {
+  display: inline-block; margin-top: 14px; font-size: 13px;
+  background: rgba(255,255,255,0.22); padding: 6px 16px; border-radius: 20px;
+  backdrop-filter: blur(4px); position: relative; z-index: 1;
+}
+.cover .ctag {
+  display: inline-block; margin-top: 10px; font-size: 13px;
+  background: rgba(255,255,255,0.22); padding: 6px 16px; border-radius: 20px;
+  position: relative; z-index: 1;
+}
+.appbar {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 5;
+  background: transparent;
+  color: #fff; padding: 18px 20px 16px;
+  text-align: left;
+}
+.appbar .title { font-size: 22px; letter-spacing: 1px; }
+.appbar .sub { margin-top: 4px; font-size: 13px; opacity: 0.95; font-family: 'Noto Sans SC', sans-serif; }
+.wrap { padding: 14px 12px 30px; }
+.card {
+  background: #fff7ef; border-radius: 18px; margin-bottom: 14px; overflow: hidden;
+  box-shadow: 0 4px 16px rgba(255,140,90,0.12);
+}
+.card-head {
+  display: flex; align-items: center; padding: 14px 16px;
+  border-left: 5px solid var(--c);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--c) 10%, #fff), #fff 70%);
+}
+.card-head .ic { width: 32px; height: 32px; border-radius: 50%; margin-right: 10px; object-fit: contain; background: #fff; padding: 4px; border: 2px solid #fff; box-shadow: 0 1px 5px rgba(0,0,0,0.14); }
+.card-head .nm { font-size: 18px; color: #2a2320; font-family: 'ZCOOL KuaiLe'; }
+.card-head .tag {
+  margin-left: auto; font-size: 12px; font-weight: 700; color: var(--c);
+  background: color-mix(in srgb, var(--c) 14%, #fff); padding: 3px 10px; border-radius: 12px;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.row {
+  display: flex; align-items: flex-start; padding: 13px 16px;
+  border-top: 1px solid #f6e7d8;
+}
+.row:nth-child(even) { background: #fff3e8; }
+.row .rank {
+  flex: 0 0 26px; height: 26px; border-radius: 50%; margin-right: 12px;
+  font-size: 14px; display: flex; align-items: center; justify-content: center;
+  background: #ffe7d6; color: #d9722f;
+}
+.row.top1 .rank { background: #ff5e8a; color: #fff; }
+.row.top2 .rank { background: #ff944d; color: #fff; }
+.row.top3 .rank { background: #ffc24d; color: #fff; }
+.row .tt {
+  flex: 1; font-size: 17px; color: #34291f; font-family: 'ZCOOL XiaoWei';
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.row .hot { margin-left: 10px; font-size: 12px; color: #d9b89f; white-space: nowrap; flex: 0 0 auto; font-family: 'Noto Sans SC', sans-serif; }
+.empty { padding: 22px 16px; color: #c9a98f; font-size: 14px; text-align: center; }
+.foot {
+  text-align: center; color: #c79c83; font-size: 12px; padding: 10px 20px 26px; line-height: 1.7;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.foot b { color: #b07a55; }</style></head><body><div class="phone"><div class="cover"><div class="appbar"><div class="title">热榜速览</div><div class="sub">2026年8月6日 星期四 · 全网热点一屏看全</div></div><div class="cover-inner"><div class="deco">🌐 ✨ 🔥</div><div class="ctitle">今日热点速览</div><div class="cslogan"><span class="s1">打破信息茧房</span><span class="s2">三分钟，世界发生了啥</span></div><div class="cdate">2026年8月6日 星期四</div><div class="ctag">一屏看全 10 大平台</div></div></div><div class="wrap"><section class="card" style="--c:#4e6ef2"><div class="card-head"><img class="ic" src="icons/baidu.png" alt="百度热搜"><span class="nm">百度热搜</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">费大厨全国小炒肉大王仅凭视频评出</div></div><div class="row top2"><div class="rank">2</div><div class="tt">高温热浪来袭 这些地方需注意</div></div><div class="row top3"><div class="rank">3</div><div class="tt">小学门口“一根棍”长椅怎么就火了</div></div><div class="row"><div class="rank">4</div><div class="tt">女子旅游错把丧葬品当纪念品买下</div></div><div class="row"><div class="rank">5</div><div class="tt">李亚鹏向地铁吐血女孩捐99999元</div></div><div class="row"><div class="rank">6</div><div class="tt">公职人员被举报在职校开餐厅超市</div></div><div class="row"><div class="rank">7</div><div class="tt">周杰伦晒打网球图 配文：照打</div></div><div class="row"><div class="rank">8</div><div class="tt">美股收盘：道指再创历史新高</div></div><div class="row"><div class="rank">9</div><div class="tt">死刑改死缓当事人：已付出沉重代价</div></div><div class="row"><div class="rank">10</div><div class="tt">SpaceX市值蒸发2250亿美元</div></div></section><section class="card" style="--c:#00aeec"><div class="card-head"><img class="ic" src="icons/bilibili.png" alt="哔哩哔哩"><span class="nm">哔哩哔哩</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">TES战胜EDG</div></div><div class="row top2"><div class="rank">2</div><div class="tt">GEN战胜HLE终结连败</div></div><div class="row top3"><div class="rank">3</div><div class="tt">神二十一乘组回家后首次亮相</div></div><div class="row"><div class="rank">4</div><div class="tt">JDG战胜LGD</div></div><div class="row"><div class="rank">5</div><div class="tt">欢迎来到研究生的世界</div></div><div class="row"><div class="rank">6</div><div class="tt">中国人能飞初音未来版</div></div><div class="row"><div class="rank">7</div><div class="tt">电脑市场2026现状</div></div><div class="row"><div class="rank">8</div><div class="tt">8月份返校的高三生</div></div><div class="row"><div class="rank">9</div><div class="tt">fgo2.6动画化</div></div><div class="row"><div class="rank">10</div><div class="tt">雾海之下首曝PV</div></div></section><section class="card" style="--c:#c0392b"><div class="card-head"><img class="ic" src="icons/cls.png" alt="财联社"><span class="nm">财联社</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">【点金互动易】玻璃基板+光互连，打通20层玻璃基载板全流程工艺，这家公司技术跨界延伸至纳米级加工与MicroLED光互连领域，多项硬核技术适时推动量产</div></div><div class="row top2"><div class="rank">2</div><div class="tt">财联社8月6日电，日经225指数期货在早盘交易中下跌1.1%。</div></div><div class="row top3"><div class="rank">3</div><div class="tt">中信建投：全球光通信行业未来五年有望持续保持高增长态势</div></div><div class="row"><div class="rank">4</div><div class="tt">巴西降级与阿根廷关系 阿称驻巴大使将“回国休假”</div></div><div class="row"><div class="rank">5</div><div class="tt">微盘股成资金博弈“避险”新方向 优质小微企业有望迎来价值重估</div></div><div class="row"><div class="rank">6</div><div class="tt">A股限售股解禁一览：58.36亿元市值限售股今日解禁</div></div><div class="row"><div class="rank">7</div><div class="tt">全球首座16兆瓦张力腿浮式风电平台正式投运</div></div><div class="row"><div class="rank">8</div><div class="tt">美国光模块“禁令”传闻扰动 业内人士：实际落地难度大</div></div><div class="row"><div class="rank">9</div><div class="tt">多家期货公司终止居间人合作 行业获客进入专业价值比拼新阶段</div></div><div class="row"><div class="rank">10</div><div class="tt">新催化剂将二氧化碳高效转化为乙醇</div></div></section><section class="card" style="--c:#2e963f"><div class="card-head"><img class="ic" src="icons/douban.png" alt="豆瓣"><span class="nm">豆瓣</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">痴迷</div></div><div class="row top2"><div class="rank">2</div><div class="tt">群体</div></div><div class="row top3"><div class="rank">3</div><div class="tt">狂唱下半场</div></div><div class="row"><div class="rank">4</div><div class="tt">无界之环</div></div><div class="row"><div class="rank">5</div><div class="tt">末路讨债人</div></div><div class="row"><div class="rank">6</div><div class="tt">消失的人</div></div><div class="row"><div class="rank">7</div><div class="tt">寒战1994</div></div><div class="row"><div class="rank">8</div><div class="tt">利未记</div></div><div class="row"><div class="rank">9</div><div class="tt">揭秘日</div></div><div class="row"><div class="rank">10</div><div class="tt">后室</div></div></section><section class="card" style="--c:#fe2c55"><div class="card-head"><img class="ic" src="icons/douyin.png" alt="抖音"><span class="nm">抖音</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">这世界大得让你很难不旅游</div></div><div class="row top2"><div class="rank">2</div><div class="tt">凉资源激活夏日经济热流量</div></div><div class="row top3"><div class="rank">3</div><div class="tt">首届早餐烘焙大师赛</div></div><div class="row"><div class="rank">4</div><div class="tt">趁夏天赴一场八大古镇之约</div></div><div class="row"><div class="rank">5</div><div class="tt">无畏巡回成都站开赛</div></div><div class="row"><div class="rank">6</div><div class="tt">2026抖音创作者大会来了</div></div><div class="row"><div class="rank">7</div><div class="tt">夏日蓝色系妆一眼降温</div></div><div class="row"><div class="rank">8</div><div class="tt">时代少年团演唱会</div></div><div class="row"><div class="rank">9</div><div class="tt">汛期五大谣言套路曝光</div></div><div class="row"><div class="rank">10</div><div class="tt">王者新英雄卢雅那即将上线</div></div></section><section class="card" style="--c:#ff7a00"><div class="card-head"><img class="ic" src="icons/hupu.png" alt="虎扑"><span class="nm">虎扑</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">这是我见过最漂亮的户型，没有之一</div></div><div class="row top2"><div class="rank">2</div><div class="tt">一开始担心没人理我，没有想到现在热度还挺高</div></div><div class="row top3"><div class="rank">3</div><div class="tt">花小龙:被张伟丽姐反向自律的一天</div></div><div class="row"><div class="rank">4</div><div class="tt">因为穷怕了被包养，你们会看不起吗？</div></div><div class="row"><div class="rank">5</div><div class="tt">“教科书式老赖”黄淑芬，撞死人拒赔11年，如今落得这样的下场</div></div><div class="row"><div class="rank">6</div><div class="tt">真实经历 | 三年前女朋友要20w彩礼后续</div></div><div class="row"><div class="rank">7</div><div class="tt">滴滴把我行李拉跑，并且联系不上司机了，行李里面有2万多的电脑</div></div><div class="row"><div class="rank">8</div><div class="tt">大洗牌！最新全国50强城市，又变了</div></div><div class="row"><div class="rank">9</div><div class="tt">刘翔退役后天天打游戏，姚明退役后天天打游戏，邹市明本来也天天打游戏，哥仨本来都过得挺好，后来邹市明不打游戏被逼去创业......​​​是不是拳击容易被打傻？</div></div><div class="row"><div class="rank">10</div><div class="tt">这事怪马总，没怎么带蔡总去商k足浴见识大场面</div></div></section><section class="card" style="--c:#00be06"><div class="card-head"><img class="ic" src="icons/iqiyi.png" alt="爱奇艺"><span class="nm">爱奇艺</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">天才，女友</div></div><div class="row top2"><div class="rank">2</div><div class="tt">这一秒过火</div></div><div class="row top3"><div class="rank">3</div><div class="tt">兵自风中来</div></div><div class="row"><div class="rank">4</div><div class="tt">喜欢你我也是第6季</div></div><div class="row"><div class="rank">5</div><div class="tt">雀骨</div></div><div class="row"><div class="rank">6</div><div class="tt">喜剧之王单口季第3季</div></div><div class="row"><div class="rank">7</div><div class="tt">凛冬下的罪恶</div></div><div class="row"><div class="rank">8</div><div class="tt">说唱巅峰对决2026</div></div><div class="row"><div class="rank">9</div><div class="tt">种地吧第4季</div></div><div class="row"><div class="rank">10</div><div class="tt">南部档案</div></div></section><section class="card" style="--c:#d8362a"><div class="card-head"><img class="ic" src="icons/ifeng.png" alt="凤凰网"><span class="nm">凤凰网</span><span class="tag">TOP 3</span></div><div class="row top1"><div class="rank">1</div><div class="tt">一个中国新税号引发美国大焦虑</div></div><div class="row top2"><div class="rank">2</div><div class="tt">美国拉“新群”，阿根廷、巴拿马等17国加入</div></div><div class="row top3"><div class="rank">3</div><div class="tt">美议员候选人沙滩扰民还挑衅，被路人一拳打趴(图)</div></div></section><section class="card" style="--c:#e6162d"><div class="card-head"><img class="ic" src="icons/weibo.png" alt="微博"><span class="nm">微博</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">李亚鹏向地铁吐血女孩捐99999元</div></div><div class="row top2"><div class="rank">2</div><div class="tt">预拨3.3亿元支持8省市抢险救灾</div></div><div class="row top3"><div class="rank">3</div><div class="tt">老祖宗怎么可以聪明成这样</div></div><div class="row"><div class="rank">4</div><div class="tt">刘宇宁知道自己是大男主的反应</div></div><div class="row"><div class="rank">5</div><div class="tt">这一秒过火全员be</div></div><div class="row"><div class="rank">6</div><div class="tt">苹果要求长鑫降价反遭涨价</div></div><div class="row"><div class="rank">7</div><div class="tt">可杰 top</div></div><div class="row"><div class="rank">8</div><div class="tt">王艺迪3比1伊藤美诚</div></div><div class="row"><div class="rank">9</div><div class="tt">王源易烊千玺换蛋糕不给王俊凯说</div></div><div class="row"><div class="rank">10</div><div class="tt">最近你买黄金了没</div></div></section><section class="card" style="--c:#0084ff"><div class="card-head"><img class="ic" src="icons/zhihu.png" alt="知乎"><span class="nm">知乎</span><span class="tag">TOP 10</span></div><div class="row top1"><div class="rank">1</div><div class="tt">长鑫拒绝苹果压价，要求内存采购价不低于三星和 SK 海力士，是否意味议价权彻底反转？可能有哪些影响？</div></div><div class="row top2"><div class="rank">2</div><div class="tt">媒体称电车露营正干崩暑期酒店生意，全国平均入住率同比下降 3%，真是这样吗？你愿意省下房费住进车里吗？</div></div><div class="row top3"><div class="rank">3</div><div class="tt">兰州拉面纷纷改名青海拉面，背后有哪些商业博弈？会影响你的消费选择吗？</div></div><div class="row"><div class="rank">4</div><div class="tt">网友吐槽现在的交响乐团只能靠游戏演奏会维持生计，对此你怎么看？</div></div><div class="row"><div class="rank">5</div><div class="tt">如何看待李修贤关于周星驰事件的道歉言论？</div></div><div class="row"><div class="rank">6</div><div class="tt">段永平减持了泡泡玛特，前几天刚说十年内不卖，如何评价他的操作？</div></div><div class="row"><div class="rank">7</div><div class="tt">35 岁女子 1 天 5 瓶可乐喝成 60 岁脸，可乐危害真有这么大吗？高糖饮食为何会加速健康恶化？</div></div><div class="row"><div class="rank">8</div><div class="tt">如何看待此前完成 1000 天琦玉训练的堂主 lee 又完成「一天一个马拉松，持续 365 天」挑战？</div></div><div class="row"><div class="rank">9</div><div class="tt">网上为什么对《天道》这部剧评价得像神一样？</div></div><div class="row"><div class="rank">10</div><div class="tt">地球一次自转需要 23 小时 56 分钟，剩下的 4 分钟去哪儿了呢？</div></div></section><div class="foot">内容聚合自各平台公开热榜，经敏感词过滤后展示<br>来源：<b>newsnow-yin.pages.dev</b> · 仅供参考，请以原平台为准</div></div></div></body></html>
